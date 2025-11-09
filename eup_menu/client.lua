@@ -84,6 +84,25 @@ function ApplyUniform(uniformName)
         ClearPedProp(playerPed, 2)
     end
     
+    if outfit['mask_1'] and outfit['mask_1'] ~= -1 then
+        SetPedComponentVariation(playerPed, 1, outfit['mask_1'], outfit['mask_2'] or 0, 0)
+    else
+        SetPedComponentVariation(playerPed, 1, 0, 0, 0)
+    end
+    
+    if outfit['bproof_1'] and outfit['bproof_1'] ~= -1 then
+        SetPedComponentVariation(playerPed, 9, outfit['bproof_1'], outfit['bproof_2'] or 0, 0)
+    else
+        SetPedComponentVariation(playerPed, 9, 0, 0, 0)
+    end
+    
+    -- Apply bags/parachutes (Component 5)
+    if outfit['bags_1'] and outfit['bags_1'] ~= -1 then
+        SetPedComponentVariation(playerPed, 5, outfit['bags_1'], outfit['bags_2'] or 0, 0)
+    else
+        SetPedComponentVariation(playerPed, 5, 0, 0, 0)
+    end
+    
     currentOutfit = uniformName
     
     -- Notification
@@ -119,6 +138,11 @@ function RemoveUniform()
     -- Clear props
     ClearPedProp(playerPed, 0) -- Hat
     ClearPedProp(playerPed, 2) -- Ears
+    
+    -- Clear mask, body armor, and bags/parachutes
+    SetPedComponentVariation(playerPed, 1, 0, 0, 0) -- Mask
+    SetPedComponentVariation(playerPed, 9, 0, 0, 0) -- Body Armor
+    SetPedComponentVariation(playerPed, 5, 0, 0, 0) -- Bags/Parachutes
     
     currentOutfit = nil
     

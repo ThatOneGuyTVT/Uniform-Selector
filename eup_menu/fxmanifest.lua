@@ -1,20 +1,17 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'Your Name'
+author 'ThatOneGuyTVT'
 description 'EUP Menu System'
 version '1.0.0'
 
 ui_page 'html/index.html'
 
-client_scripts {
-    'config.lua',
-    'client.lua'
-}
+shared_script 'config.lua'
 
-server_scripts {
-    'server.lua'
-}
+client_script 'client.lua'
+
+server_script 'server.lua'
 
 files {
     'html/index.html',
