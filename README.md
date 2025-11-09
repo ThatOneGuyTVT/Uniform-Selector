@@ -96,7 +96,9 @@ Config.Uniforms = {
         ['shoes_1'] = 0, ['shoes_2'] = 0,
         ['helmet_1'] = -1, ['helmet_2'] = 0,
         ['chain_1'] = 0, ['chain_2'] = 0,
-        ['ears_1'] = -1, ['ears_2'] = 0
+        ['ears_1'] = -1, ['ears_2'] = 0,
+        ['mask_1'] = -1, ['mask_2'] = 0,
+        ['bproof_1'] = -1, ['bproof_2'] = 0
     },
     female = {
         -- Same structure for female
@@ -117,11 +119,13 @@ Config.Uniforms = {
 | `chain_1` / `chain_2` | Accessories |
 | `ears_1` / `ears_2` | Earrings (Prop) |
 | `decals_1` / `decals_2` | Badges/Decals |
+| `mask_1` / `mask_2` | Face Masks |
+| `bproof_1` / `bproof_2` | Body Armor/Vests |
 
 *Note: Set prop values to `-1` to remove them*
 
 ## Permissions (Optional)
-Permisions are great for divisions such as SWAT or seperate departments
+Permissions are great for divisions such as SWAT or separate departments
 
 To enable job-based permissions:
 
@@ -215,7 +219,7 @@ SOFTWARE.
 ## Support
 
 If you need help or have questions:
-- Dm me on discord @ testacc0985
+- DM me on Discord @ testacc0985
 
 ## Credits
 
