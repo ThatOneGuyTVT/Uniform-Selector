@@ -11,11 +11,12 @@ A simple, standalone uniform menu system for FiveM that allows players to access
 - Clean, modern UI with smooth animations
 - Support for multiple uniforms (Police, EMS, Sheriff, and more)
 - Separate male and female outfit configurations
+- **Full component support** including bags and parachutes (vMenu-style)
 - Easy to customize and add new uniforms
 - Framework agnostic (works with ESX, QBCore, ND_Core, ox_core, or standalone)
 - No dependencies required
 - Lightweight and optimized
-- Simple command: `/uniform`
+- Simple command: `/uniform` or `/eup`
 
 ## Preview
 
@@ -52,6 +53,7 @@ resources/
 
 ### In-Game Commands
 - `/uniform` - Opens the uniform menu
+- `/eup` - Alternative command to open the menu
 
 ### Controls
 - Click on any uniform to equip it
@@ -69,11 +71,16 @@ Config.Uniforms = {
         male = {
             ['tshirt_1'] = 58, ['tshirt_2'] = 0,
             ['torso_1'] = 55, ['torso_2'] = 0,
+            ['arms'] = 41,
+            ['pants_1'] = 25, ['pants_2'] = 0,
+            ['shoes_1'] = 25, ['shoes_2'] = 0,
+            ['bags_1'] = -1, ['bags_2'] = 0,  -- NEW: Bags/Parachutes support
             -- Add more components...
         },
         female = {
             ['tshirt_1'] = 35, ['tshirt_2'] = 0,
             ['torso_1'] = 48, ['torso_2'] = 0,
+            ['bags_1'] = -1, ['bags_2'] = 0,
             -- Add more components...
         }
     }
@@ -98,7 +105,8 @@ Config.Uniforms = {
         ['chain_1'] = 0, ['chain_2'] = 0,
         ['ears_1'] = -1, ['ears_2'] = 0,
         ['mask_1'] = -1, ['mask_2'] = 0,
-        ['bproof_1'] = -1, ['bproof_2'] = 0
+        ['bproof_1'] = -1, ['bproof_2'] = 0,
+        ['bags_1'] = -1, ['bags_2'] = 0
     },
     female = {
         -- Same structure for female
@@ -108,21 +116,43 @@ Config.Uniforms = {
 
 ### Component IDs Reference
 
-| Component | Description |
-|-----------|-------------|
-| `tshirt_1` / `tshirt_2` | Undershirt |
-| `torso_1` / `torso_2` | Top/Jacket |
-| `arms` | Arms/Sleeves |
-| `pants_1` / `pants_2` | Pants |
-| `shoes_1` / `shoes_2` | Shoes |
-| `helmet_1` / `helmet_2` | Hats/Helmets (Prop) |
-| `chain_1` / `chain_2` | Accessories |
-| `ears_1` / `ears_2` | Earrings (Prop) |
-| `decals_1` / `decals_2` | Badges/Decals |
-| `mask_1` / `mask_2` | Face Masks |
-| `bproof_1` / `bproof_2` | Body Armor/Vests |
+| Component | Description | GTA Component ID |
+|-----------|-------------|------------------|
+| `tshirt_1` / `tshirt_2` | Undershirt | 8 |
+| `torso_1` / `torso_2` | Top/Jacket | 11 |
+| `arms` | Arms/Sleeves | 3 |
+| `pants_1` / `pants_2` | Pants | 4 |
+| `shoes_1` / `shoes_2` | Shoes | 6 |
+| `helmet_1` / `helmet_2` | Hats/Helmets (Prop) | 0 |
+| `chain_1` / `chain_2` | Accessories | 7 |
+| `ears_1` / `ears_2` | Earrings (Prop) | 2 |
+| `decals_1` / `decals_2` | Badges/Decals | 10 |
+| `mask_1` / `mask_2` | Face Masks | 1 |
+| `bproof_1` / `bproof_2` | Body Armor/Vests | 9 |
+| `bags_1` / `bags_2` | **Bags/Parachutes** | **5** |
 
-*Note: Set prop values to `-1` to remove them*
+*Note: Set component values to `-1` to remove them*
+
+### Bags & Parachutes Support
+
+This menu now supports bags and parachutes (Component 5) just like vMenu! Both items share the same drawable slot.
+
+**Example Usage:**
+```lua
+['swat'] = {
+    label = 'SWAT Uniform',
+    male = {
+        -- ... other components ...
+        ['bags_1'] = 45,  -- Backpack drawable
+        ['bags_2'] = 0    -- Backpack texture
+    }
+}
+```
+
+**Common Bag/Parachute IDs:**
+- `0` - No bag/parachute
+- `40-50` - Various tactical bags
+- `100-132` - Parachutes and special bags
 
 ## Permissions (Optional)
 Permissions are great for divisions such as SWAT or separate departments
@@ -173,6 +203,21 @@ end
 - Verify your clothing IDs match your EUP pack
 - Test IDs with a clothing menu first
 
+**Bags/Parachutes not showing?**
+- Make sure you've added `['bags_1']` and `['bags_2']` to your uniform configs
+- Test the drawable IDs in a clothing menu (vMenu, qb-clothing, etc.)
+
+## Changelog
+
+### v1.0.0
+- Initial release
+- Support for all GTA V clothing components
+- Male and female outfit configurations
+- Clean, modern UI
+- **Added bags and parachutes support (Component 5)**
+- Framework agnostic design
+- Optional permission system
+
 ## To-Do / Future Features
 
 - [ ] Save last worn uniform
@@ -180,12 +225,14 @@ end
 - [ ] ox_lib menu integration
 - [ ] Loadout support (weapons with uniforms)
 - [ ] Category organization for large uniform lists
+- [ ] Glasses/Watches support
 
 ## Contributing
 
 Contributions are welcome! Feel free to:
 - Report bugs
 - Suggest new features
+- Submit pull requests
 - Show your appreciation
 
 ## License
