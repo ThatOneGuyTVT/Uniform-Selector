@@ -35,7 +35,7 @@ A simple, standalone uniform menu system for FiveM that allows players to access
 3. Add `ensure eup_menu` to your `server.cfg`
 4. Restart your server or run `refresh` then `ensure eup_menu` in console
 
-### Folder Structure
+### Folder Structure **Be Sure You Have ALL Files**
 ```
 resources/
 └── eup_menu/
