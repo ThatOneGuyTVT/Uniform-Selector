@@ -18,9 +18,6 @@ A simple, standalone uniform menu system for FiveM that allows players to access
 - Lightweight and optimized
 - Simple command: `/uniform` or `/eup`
 
-## Preview
-
-![EUP Menu Preview](https://cdn.discordapp.com/attachments/1421902488973348954/1436786513558900927/image.png?ex=6910df37&is=690f8db7&hm=6915ea256bee192791a753c34be96c6496cecd88223402bd063736884bd59a2c&)
 
 ## Requirements
 
